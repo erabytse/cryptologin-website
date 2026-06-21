@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CryptoLogin · Authentification Zero-Knowledge</title>
+    <meta name="description" content="CryptoLogin : Authentification sans email, sans mot de passe. Juste votre secret. Zero-Knowledge, chiffrement militaire." />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" href="assets/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+    <!-- ============================================================ -->
+    <!-- HEADER / NAVIGATION                                            -->
+    <!-- ============================================================ -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="/" class="nav__logo">
+                    <span class="nav__logo-icon">🔐</span>
+                    CryptoLogin
+                </a>
+                <ul class="nav__links">
+                    <li><a href="#philosophie">Philosophie</a></li>
+                    <li><a href="#features">Fonctionnalités</a></li>
+                    <li><a href="#security">Sécurité</a></li>
+                    <li><a href="#demo" class="btn btn--primary">Essayer la démo</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ============================================================ -->
+    <!-- HERO                                                           -->
+    <!-- ============================================================ -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero__content">
+                <span class="hero__badge">✨ Zero-Knowledge</span>
+                <h1 class="hero__title">
+                    L'authentification <br />
+                    <span class="hero__title-highlight">réinventée</span>
+                </h1>
+                <p class="hero__subtitle">
+                    Plus besoin d'email, ni de mot de passe. <br />
+                    Juste votre secret. <br />
+                    <span class="hero__subtitle-highlight">Un seul. Pour toute la vie numérique.</span>
+                </p>
+                <div class="hero__actions">
+                    <a href="#demo" class="btn btn--primary btn--large">Commencer la démo</a>
+                    <a href="https://github.com/erabytse/CryptoLogin" target="_blank" class="btn btn--secondary btn--large">⭐ GitHub</a>
+                </div>
+            </div>
+            <div class="hero__visual">
+                <div class="hero__code-block">
+                    <pre><code><span class="code-comment"># Une révolution, en une ligne</span>
+<span class="code-keyword">from</span> cryptologin <span class="code-keyword">import</span> CryptoLogin
+
+auth = CryptoLogin()
+user_id = auth.register(<span class="code-string">"mon-secret"</span>)
+<span class="code-comment"># C'est tout. Plus rien.</span></code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- PHILOSOPHIE                                                   -->
+    <!-- ============================================================ -->
+    <section id="philosophie" class="philosophie">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-header__tag">💭 Notre vision</span>
+                <h2 class="section-header__title">L'authentification comme <span class="highlight">acte de soin</span></h2>
+            </div>
+            <div class="philosophie__grid">
+                <div class="philosophie__card">
+                    <div class="philosophie__icon">🕊️</div>
+                    <h3>Légèreté</h3>
+                    <p>Un seul secret à retenir. Fini les mots de passe oubliés, les emails perdus.</p>
+                </div>
+                <div class="philosophie__card">
+                    <div class="philosophie__icon">🛡️</div>
+                    <h3>Protection</h3>
+                    <p>Votre secret ne quitte jamais votre esprit. Le serveur n'en connaît rien. Zero-Knowledge.</p>
+                </div>
+                <div class="philosophie__card">
+                    <div class="philosophie__icon">🌱</div>
+                    <h3>Durabilité</h3>
+                    <p>Un système qui respecte vos données. Pas de trackers, pas de dépendances à des tiers.</p>
+                </div>
+            </div>
+            <div class="philosophie__quote">
+                <blockquote>
+                    "PoetryCoding™ n'est pas une méthode. C'est une posture. Coder comme on écrit de la poésie : avec retenue, avec soin."
+                </blockquote>
+                <cite>— erabytse, fondateur du mouvement PoetryCoding</cite>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- FONCTIONNALITÉS                                               -->
+    <!-- ============================================================ -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-header__tag">⚡ La révolution</span>
+                <h2 class="section-header__title">Pourquoi <span class="highlight">CryptoLogin</span> change tout</h2>
+            </div>
+            <div class="features__grid">
+                <div class="features__item">
+                    <div class="features__icon">🔐</div>
+                    <h3>Zero-Knowledge</h3>
+                    <p>Le serveur ne connaît jamais votre secret. Une sécurité absolue.</p>
+                </div>
+                <div class="features__item">
+                    <div class="features__icon">📧</div>
+                    <h3>Sans email</h3>
+                    <p>Fini les spams, les vérifications, les pertes de mot de passe.</p>
+                </div>
+                <div class="features__item">
+                    <div class="features__icon">🔑</div>
+                    <h3>Sans mot de passe</h3>
+                    <p>Un seul secret maître. Pour toute votre vie numérique.</p>
+                </div>
+                <div class="features__item">
+                    <div class="features__icon">🛡️</div>
+                    <h3>Chiffrement militaire</h3>
+                    <p>AES-256-GCM, Argon2id, SecureBuffer. Les standards les plus élevés.</p>
+                </div>
+                <div class="features__item">
+                    <div class="features__icon">🚀</div>
+                    <h3>2 secondes</h3>
+                    <p>Création de compte en un clic. Authentification en un instant.</p>
+                </div>
+                <div class="features__item">
+                    <div class="features__icon">🌍</div>
+                    <h3>Universel</h3>
+                    <p>Un seul secret pour tous vos comptes. Simple, efficace.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SÉCURITÉ                                                      -->
+    <!-- ============================================================ -->
+    <section id="security" class="security">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-header__tag">🔒 Sécurité</span>
+                <h2 class="section-header__title">Une forteresse <span class="highlight">numérique</span></h2>
+            </div>
+            <div class="security__grid">
+                <div class="security__card">
+                    <h3>AES-256-GCM</h3>
+                    <p>Standard NIST de chiffrement. Utilisé par les gouvernements et les armées.</p>
+                    <span class="security__badge">✅ FIPS 197</span>
+                </div>
+                <div class="security__card">
+                    <h3>Argon2id</h3>
+                    <p>La fonction de dérivation de clé la plus résistante. Protection contre les attaques GPU/ASIC.</p>
+                    <span class="security__badge">✅ OWASP ASVS</span>
+                </div>
+                <div class="security__card">
+                    <h3>SecureBuffer</h3>
+                    <p>Effacement automatique des données sensibles en mémoire. Une hygiène militaire.</p>
+                    <span class="security__badge">✅ Mémoire protégée</span>
+                </div>
+                <div class="security__card">
+                    <h3>Zero-Knowledge</h3>
+                    <p>Le secret ne quitte jamais l'utilisateur. Le serveur ne stocke que des données chiffrées.</p>
+                    <span class="security__badge">✅ GDPR compliant</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- COMPARAISON                                                   -->
+    <!-- ============================================================ -->
+    <section class="comparison">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-header__tag">📊 Comparaison</span>
+                <h2 class="section-header__title">CryptoLogin vs <span class="highlight">le reste du monde</span></h2>
+            </div>
+            <div class="comparison__table-wrapper">
+                <table class="comparison__table">
+                    <thead>
+                        <tr>
+                            <th>Fonctionnalité</th>
+                            <th>CryptoLogin</th>
+                            <th>Auth0</th>
+                            <th>Firebase</th>
+                            <th>Clerk</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Zero-Knowledge</td>
+                            <td class="comparison__yes">✅</td>
+                            <td class="comparison__no">❌</td>
+                            <td class="comparison__no">❌</td>
+                            <td class="comparison__no">❌</td>
+                        </tr>
+                        <tr>
+                            <td>Sans email</td>
+                            <td class="comparison__yes">✅</td>
+                            <td class="comparison__no">❌</td>
+                            <td class="comparison__no">❌</td>
+                            <td class="comparison__no">❌</td>
+                        </tr>
+                        <tr>
+                            <td>Sans mot de passe</td>
+                            <td class="comparison__yes">✅</td>
+                            <td class="comparison__no">❌</td>
+                            <td class="comparison__no">❌</td>
+                            <td class="comparison__no">❌</td>
+                        </tr>
+                        <tr>
+                            <td>Open Source</td>
+                            <td class="comparison__yes">✅</td>
+                            <td class="comparison__no">❌</td>
+                            <td class="comparison__no">❌</td>
+                            <td class="comparison__no">❌</td>
+                        </tr>
+                        <tr>
+                            <td>Auto-hébergement</td>
+                            <td class="comparison__yes">✅</td>
+                            <td class="comparison__no">❌</td>
+                            <td class="comparison__no">❌</td>
+                            <td class="comparison__no">❌</td>
+                        </tr>
+                        <tr>
+                            <td>Chiffrement militaire</td>
+                            <td class="comparison__yes">✅</td>
+                            <td class="comparison__no">⚠️</td>
+                            <td class="comparison__no">⚠️</td>
+                            <td class="comparison__no">⚠️</td>
+                        </tr>
+                        <tr>
+                            <td>Prix</td>
+                            <td class="comparison__price">💰 <strong>Gratuit</strong></td>
+                            <td class="comparison__price">💰💰💰</td>
+                            <td class="comparison__price">💰💰</td>
+                            <td class="comparison__price">💰💰💰</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- DÉMO                                                          -->
+    <!-- ============================================================ -->
+    <section id="demo" class="demo">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-header__tag">🧪 Essayez maintenant</span>
+                <h2 class="section-header__title">La démo <span class="highlight">interactive</span></h2>
+                <p class="section-header__subtitle">
+                    Créez un compte en 2 secondes. Un seul secret. Aucune donnée personnelle.
+                </p>
+            </div>
+
+            <div class="demo__container">
+                <!-- Message de statut -->
+                <div id="demoStatus" class="demo__status demo__status--info">
+                    🚀 Prêt à commencer
+                </div>
+
+                <!-- Formulaire -->
+                <div class="demo__form">
+                    <div class="demo__field">
+                        <label for="demoSecret">Votre secret maître</label>
+                        <input type="password" id="demoSecret" placeholder="Minimum 32 caractères" />
+                        <small>🔒 Ce secret ne sera jamais envoyé en clair. Stocké de manière sécurisée.</small>
+                    </div>
+                    <div class="demo__actions">
+                        <button id="demoRegister" class="btn btn--primary">📝 S'enregistrer</button>
+                        <button id="demoLogin" class="btn btn--secondary">🔑 Se connecter</button>
+                        <button id="demoLogout" class="btn btn--danger" style="display:none;">🚪 Déconnexion</button>
+                    </div>
+                </div>
+
+                <!-- Résultats -->
+                <div id="demoResult" class="demo__result" style="display:none;">
+                    <h4>📋 Résultat</h4>
+                    <pre id="demoOutput"><code></code></pre>
+                </div>
+
+                <div class="demo__info">
+                    <p>
+                        💡 <strong>Comment ça marche ?</strong><br />
+                        Votre secret est utilisé pour <strong>chiffrer</strong> vos données en local.
+                        Le serveur ne reçoit qu'un <strong>challenge</strong> que vous seul pouvez déchiffrer.
+                        C'est la magie du <strong>Zero-Knowledge</strong>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- FOOTER                                                        -->
+    <!-- ============================================================ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <span class="footer__logo">🔐 CryptoLogin</span>
+                    <p>Authentification Zero-Knowledge.<br />Un acte de soin numérique.</p>
+                </div>
+                <div class="footer__links">
+                    <h4>Liens</h4>
+                    <ul>
+                        <li><a href="https://github.com/erabytse/CryptoLogin">GitHub</a></li>
+                        <li><a href="https://pypi.org/project/cryptologin">PyPI</a></li>
+                        <li><a href="https://erabytse.github.io">ERABYTSE</a></li>
+                    </ul>
+                </div>
+                <div class="footer__philosophy">
+                    <h4>Philosophie</h4>
+                    <p>
+                        <em>"PoetryCoding™ : coder comme on écrit de la poésie — avec retenue, avec soin."</em>
+                    </p>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2026 <a href="https://erabytse.github.io">ERABYTSE</a> — Tous droits réservés.</p>
+                <p>Fait avec ❤️ et <a href="https://erabytse.github.io">PoetryCoding</a>.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
