@@ -6,7 +6,7 @@
  */
 
 // Configuration - À MODIFIER AVEC VOTRE VPS
-const API_BASE_URL = 'https://api.fbfconsulting.org/api/v1';
+const API_BASE_URL = 'https://api.docudeeper.com/api/v1';
 
 // État de la session
 let sessionId = null;
