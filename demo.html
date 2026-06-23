@@ -17,7 +17,7 @@
         <div class="container">
             <nav class="nav">
                 <a href="/" class="nav__logo">
-                    <span class="nav__logo-icon">🔐</span>
+                    <span class="nav__logo-icon"><img src="/assets/images/logo.png" alt="CLog" style="width: 58px; height: auto;"></span>
                     CryptoLogin
                 </a>
                 <ul class="nav__links">
@@ -50,7 +50,15 @@
                 <div class="demo__form">
                     <div class="demo__field">
                         <label for="demoSecret">Your Master Secret</label>
-                        <input type="password" id="demoSecret" placeholder="Minimum 32 characters" />
+                        <div class="demo__field-wrapper">
+                            <input 
+                                type="password" 
+                                id="demoSecret" 
+                                placeholder="Minimum 32 characters" 
+                                autocomplete="off"
+                            />
+                            <span class="char-counter" id="charCounter">0/32</span>
+                        </div>
                         <small>🔒 This secret never leaves your device. Stored securely.</small>
                     </div>
                     <div class="demo__actions">

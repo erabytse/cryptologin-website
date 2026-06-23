@@ -10,26 +10,51 @@
     box-sizing: border-box;
 }
 
+/* ================================================================ */
+/* PALETTE CORPORATE CRYPTOLOGIN                                    */
+/* ================================================================ */
+
 :root {
-    --color-primary: #6C63FF;
-    --color-primary-dark: #5A52E0;
-    --color-primary-light: #8B83FF;
-    --color-secondary: #FF6B6B;
-    --color-dark: #1A1A2E;
-    --color-dark-soft: #16213E;
-    --color-text: #E0E0E0;
-    --color-text-light: #A0A0A0;
-    --color-bg: #0F0F1A;
-    --color-card: #1A1A2E;
-    --color-card-hover: #222244;
-    --color-border: #2A2A4A;
+    /* Couleurs principales */
+    --color-primary: #496779;        /* Deep Navy / Violet */
+    --color-primary-dark: #00A8CC;   /* Black Deep */
+    --color-primary-light: #045846;  /* Navy plus clair */
+    
+    /* Couleurs secondaires */
+    --color-secondary: #F5A623;      /* Gold / Jaune */
+    --color-secondary-dark: #D4891B; /* Gold foncé */
+    --color-secondary-light: #F7C35A;/* Gold clair */
+    
+    /* Couleurs tertiaires */
+    --color-tertiary: #00D4FF;       /* Cyan / Bleu électrique */
+    --color-tertiary-dark: #00A8CC;  /* Cyan foncé */
+    --color-tertiary-light: #66E5FF; /* Cyan clair */
+    
+    /* Couleurs neutres */
+    --color-text: #F5F5F5;           /* Blanc cassé */
+    --color-text-light: #D8D8DD;     /* Gris clair */
+    --color-bg: #24323A;             /* Fond noir profond */
+    --color-bg-close: #1a2329;             /* Fond noir profond */
+    --color-card: #2c474d;           /* Fond des cartes */
+    --color-card-hover: #1A292C;     /* Fond des cartes au survol */
+    --color-border: #A2F3EB;         /* Bordures */
+    
+    /* Couleurs d'état */
     --color-success: #4CAF50;
     --color-error: #FF5252;
-    --color-warning: #FFC107;
+    --color-warning: #F5A623;
+    --color-info: #00D4FF;
+    
+    /* Ombres */
+    --shadow: 0 8px 32px rgba(245, 166, 35, 0.15);  /* Ombres dorées */
+    --shadow-cyan: 0 8px 32px rgba(0, 212, 255, 0.15);
+    
+    /* Bordures */
     --radius: 12px;
-    --shadow: 0 8px 32px rgba(108, 99, 255, 0.15);
     --transition: all 0.3s ease;
 }
+
+
 
 html {
     scroll-behavior: smooth;
@@ -37,7 +62,8 @@ html {
 
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background: var(--color-bg);
+    background: #26635B;
+    background: radial-gradient(circle,rgba(38, 99, 91, 1) 0%, rgba(36, 50, 58, 1) 43%);
     color: var(--color-text);
     line-height: 1.6;
     min-height: 100vh;
@@ -76,6 +102,200 @@ h4 {
 
 .highlight {
     color: var(--color-primary);
+}
+
+/* ================================================================ */
+/* BOUTONS AVEC COULEURS CORPORATE                                  */
+/* ================================================================ */
+
+.btn--primary {
+    background: var(--color-secondary);  /* Or */
+    color: var(--color-primary-dark);    /* Texte sombre pour contraste */
+}
+
+.btn--primary:hover {
+    background: var(--color-secondary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+.btn--secondary {
+    background: transparent;
+    color: var(--color-text);
+    border: 2px solid var(--color-secondary);
+}
+
+.btn--secondary:hover {
+    background: var(--color-secondary);
+    color: var(--color-primary-dark);
+    border-color: var(--color-secondary);
+}
+
+.btn--tertiary {
+    background: var(--color-tertiary);   /* Cyan */
+    color: var(--color-primary-dark);
+}
+
+.btn--tertiary:hover {
+    background: var(--color-tertiary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-cyan);
+}
+
+/* ================================================================ */
+/* LIENS ET ACCENTS                                                 */
+/* ================================================================ */
+
+a {
+    color: var(--color-secondary);
+}
+
+a:hover {
+    color: var(--color-secondary-light);
+}
+
+.highlight {
+    color: var(--color-secondary);
+}
+
+.highlight-cyan {
+    color: var(--color-tertiary);
+}
+
+/* ================================================================ */
+/* SECTION HEADERS                                                  */
+/* ================================================================ */
+
+.section-header__tag {
+    background: rgba(245, 166, 35, 0.15);
+    color: var(--color-secondary);
+}
+
+/* ================================================================ */
+/* INPUT FIELDS - AVEC COMPTEUR DE CARACTÈRES                       */
+/* ================================================================ */
+
+.demo__field {
+    position: relative;
+}
+
+.demo__field input {
+    width: 100%;
+    padding: 14px 18px;
+    padding-right: 80px;  /* Espace pour le compteur */
+    background: var(--color-primary-dark);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius);
+    color: var(--color-text);
+    font-size: 1rem;
+    transition: var(--transition);
+    font-family: inherit;
+}
+
+.demo__field input:focus {
+    outline: none;
+    border-color: var(--color-secondary);
+    box-shadow: 0 0 0 4px rgba(245, 166, 35, 0.15);
+}
+
+.demo__field input::placeholder {
+    color: var(--color-text-light);
+}
+
+/* Compteur de caractères */
+.char-counter {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-text-light);
+    pointer-events: none;
+    transition: var(--transition);
+    background: var(--color-primary-dark);
+    padding: 2px 10px;
+    border-radius: 20px;
+    border: 1px solid var(--color-border);
+}
+
+.char-counter.valid {
+    color: var(--color-success);
+    border-color: var(--color-success);
+}
+
+.char-counter.invalid {
+    color: var(--color-error);
+    border-color: var(--color-error);
+}
+
+.char-counter.warning {
+    color: var(--color-warning);
+    border-color: var(--color-warning);
+}
+
+/* ================================================================ */
+/* INPUT FIELD WITH COUNTER                                         */
+/* ================================================================ */
+
+.demo__field-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.demo__field-wrapper input {
+    width: 100%;
+    padding: 14px 18px;
+    padding-right: 80px;
+    background: var(--color-primary-dark);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius);
+    color: var(--color-text);
+    font-size: 1rem;
+    transition: var(--transition);
+    font-family: inherit;
+}
+
+.demo__field-wrapper input:focus {
+    outline: none;
+    border-color: var(--color-secondary);
+    box-shadow: 0 0 0 4px rgba(245, 166, 35, 0.15);
+}
+
+.demo__field-wrapper input::placeholder {
+    color: var(--color-text-light);
+}
+
+.char-counter {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-text-light);
+    pointer-events: none;
+    transition: var(--transition);
+    background: var(--color-primary-light);
+    padding: 2px 10px;
+    border-radius: 20px;
+    border: 1px solid var(--color-border);
+    font-variant-numeric: tabular-nums;
+}
+
+.char-counter.valid {
+    color: var(--color-success);
+    border-color: var(--color-success);
+}
+
+.char-counter.invalid {
+    color: var(--color-error);
+    border-color: var(--color-error);
+}
+
+.char-counter.warning {
+    color: var(--color-warning);
+    border-color: var(--color-warning);
 }
 
 /* ================================================================ */
@@ -207,11 +427,11 @@ h4 {
 .section-header__tag {
     display: inline-block;
     padding: 6px 16px;
-    background: rgba(108, 99, 255, 0.15);
+    background: rgba(107, 99, 255, 0.158);
     border-radius: 50px;
     font-size: 0.8rem;
     font-weight: 600;
-    color: var(--color-primary);
+    color: var(--color-primary-dark);
     text-transform: uppercase;
     letter-spacing: 0.5px;
     margin-bottom: 12px;
@@ -261,7 +481,7 @@ h4 {
     border-radius: 50px;
     font-size: 0.8rem;
     font-weight: 600;
-    color: var(--color-primary);
+    color: var(--color-primary-dark);
     margin-bottom: 16px;
 }
 
@@ -640,7 +860,7 @@ h4 {
 
 .demo__status--info {
     background: rgba(108, 99, 255, 0.15);
-    color: var(--color-primary);
+    color: var(--color-primary-dark);
 }
 
 .demo__status--success {

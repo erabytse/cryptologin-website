@@ -61,4 +61,35 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     console.log('🔐 CryptoLogin - Landing Page loaded');
+
+    // ================================================================
+    // COMPTEUR DE CARACTÈRES (pour la landing page)
+    // ================================================================
+
+    // Si la page contient un champ de secret
+    const secretInputLanding = document.querySelector('#demoSecret');
+    const charCounterLanding = document.getElementById('charCounter');
+
+    if (secretInputLanding && charCounterLanding) {
+        function updateCharCounter() {
+            const length = secretInputLanding.value.length;
+            const minLength = 32;
+            
+            charCounterLanding.textContent = `${length}/${minLength}`;
+            charCounterLanding.className = 'char-counter';
+            
+            if (length === 0) {
+                // neutre
+            } else if (length >= minLength) {
+                charCounterLanding.classList.add('valid');
+            } else if (length >= minLength * 0.7) {
+                charCounterLanding.classList.add('warning');
+            } else {
+                charCounterLanding.classList.add('invalid');
+            }
+        }
+        
+        secretInputLanding.addEventListener('input', updateCharCounter);
+        updateCharCounter();
+    }
 });

@@ -27,7 +27,7 @@
         <div class="container">
             <nav class="nav">
                 <a href="/" class="nav__logo">
-                    <span class="nav__logo-icon">🔐</span>
+                    <span class="nav__logo-icon"><img src="/assets/images/logo.png" alt="CLog" style="width: 58px; height: auto;"></span>
                     CryptoLogin
                 </a>
                 <ul class="nav__links">
@@ -105,6 +105,9 @@ user_id = auth.register(<span class="code-string">"my-secret"</span>)
                     "PoetryCoding™ It is not a method. It is an approach. Code as you would write poetry: with restraint, with care."
                 </blockquote>
                 <cite>— erabytse, founder of the movement PoetryCoding</cite>
+            </div>
+            <div align="center" py-3>
+                <img src="/assets/images/CryptoLogin.gif" width="320" height="170" alt="CryptoLogin"/>
             </div>
         </div>
     </section>
@@ -285,8 +288,16 @@ user_id = auth.register(<span class="code-string">"my-secret"</span>)
                 <!-- Formulaire -->
                 <div class="demo__form">
                     <div class="demo__field">
-                        <label for="demoSecret">Your master secret</label>
-                        <input type="password" id="demoSecret" placeholder="Minimum 32 characters" />
+                        <label for="demoSecret">Your Master Secret</label>
+                        <div class="demo__field-wrapper">
+                            <input 
+                                type="password" 
+                                id="demoSecret" 
+                                placeholder="Minimum 32 characters" 
+                                autocomplete="off"
+                            />
+                            <span class="char-counter" id="charCounter">0/32</span>
+                        </div>
                         <small>🔒 This secret will never be sent in plain text. Stored securely.</small>
                     </div>
                     <div class="demo__actions">

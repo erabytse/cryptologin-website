@@ -295,6 +295,44 @@ if (logoutBtn) {
 }
 
 // ================================================================
+// COMPTEUR DE CARACTÈRES
+// ================================================================
+
+const charCounter = document.getElementById('charCounter');
+
+if (secretInput && charCounter) {
+    // Fonction de mise à jour du compteur
+    function updateCharCounter() {
+        const length = secretInput.value.length;
+        const minLength = 32;
+        
+        // Mettre à jour le texte
+        charCounter.textContent = `${length}/${minLength}`;
+        
+        // Mettre à jour les classes
+        charCounter.className = 'char-counter';
+        
+        if (length === 0) {
+            // Aucun caractère : neutre
+        } else if (length >= minLength) {
+            charCounter.classList.add('valid');
+        } else if (length >= minLength * 0.7) { // 70% de l'objectif
+            charCounter.classList.add('warning');
+        } else {
+            charCounter.classList.add('invalid');
+        }
+    }
+    
+    // Écouter les événements
+    secretInput.addEventListener('input', updateCharCounter);
+    secretInput.addEventListener('focus', updateCharCounter);
+    secretInput.addEventListener('blur', updateCharCounter);
+    
+    // Initialiser
+    updateCharCounter();
+}
+
+// ================================================================
 // INIT
 // ================================================================
 
