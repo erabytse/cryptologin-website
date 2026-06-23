@@ -6,7 +6,7 @@
  */
 
 // backend API URL 
-const API_BASE_URL = 'http://api.docudeeper.com';  
+const API_BASE_URL = 'http://api.docudeeper.com/api/v1';  
 
 // État de la session
 let sessionId = null;
