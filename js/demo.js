@@ -144,10 +144,39 @@ async function apiCall(endpoint, method = 'POST', body = null, auth = false) {
 }
 
 // ================================================================
+// FONCTIONS SPÉCIFIQUES
+// ================================================================
+
+async function getUserData(secret) {
+    console.log('📊 Getting user data...');
+    
+    // CORRECTION: Encoder le secret pour l'URL
+    const encodedSecret = encodeURIComponent(secret);
+    const url = `/user/data?master_secret=${encodedSecret}`;
+    
+    const result = await apiCall(url, 'GET', null, true);
+    
+    if (result.status === 200) {
+        showResult({
+            action: 'get_data',
+            data: result.data.data,
+            message: 'Data retrieved successfully'
+        }, true);
+        console.log('✅ User data retrieved:', result.data.data);
+        return result.data.data;
+    } else {
+        console.warn('⚠️ Could not retrieve user data:', result);
+        setStatus('⚠️ Logged in but could not retrieve data.', 'warning');
+        return null;
+    }
+}
+
+
+// ================================================================
 // ACTIONS
 // ================================================================
 
-// 1. REGISTER
+// REGISTER
 if (registerBtn) {
     registerBtn.addEventListener('click', async () => {
         console.log('🖱️ Register button clicked');
@@ -182,7 +211,7 @@ if (registerBtn) {
     });
 }
 
-// 2. LOGIN
+// LOGIN
 if (loginBtn) {
     loginBtn.addEventListener('click', async () => {
         console.log('🖱️ Login button clicked');
@@ -204,7 +233,7 @@ if (loginBtn) {
         }
 
         const challenge = initResult.data.challenge;
-        console.log(`🔑 Challenge received: ${challenge.substring(0, 32)}...`);
+        console.log(`🔑 Challenge received`);
 
         const verifyResult = await apiCall('/auth/login/verify', 'POST', {
             master_secret: secret,
@@ -214,7 +243,6 @@ if (loginBtn) {
         if (verifyResult.status === 200) {
             sessionId = verifyResult.data.session_id;
             userId = verifyResult.data.user_id;
-            currentSecret = secret;
             updateUI();
             showResult({
                 action: 'login',
@@ -225,15 +253,8 @@ if (loginBtn) {
             }, true);
             console.log(`✅ Login successful: ${userId}`);
 
-            const dataResult = await apiCall(`/user/data?master_secret=${secret}`, 'GET', null, true);
-            if (dataResult.status === 200) {
-                showResult({
-                    action: 'get_data',
-                    data: dataResult.data.data,
-                    message: 'Data retrieved successfully'
-                }, true);
-                console.log('✅ User data retrieved:', dataResult.data.data);
-            }
+            // Récupérer les données utilisateur
+            await getUserData(secret);
         } else {
             setStatus(`❌ Error: ${verifyResult.data?.detail || 'Unknown error'}`, 'error');
             showResult(verifyResult.data, false);
@@ -242,7 +263,7 @@ if (loginBtn) {
     });
 }
 
-// 3. LOGOUT
+// LOGOUT
 if (logoutBtn) {
     logoutBtn.addEventListener('click', async () => {
         console.log('🖱️ Logout button clicked');
@@ -258,7 +279,6 @@ if (logoutBtn) {
         if (result.status === 200) {
             sessionId = null;
             userId = null;
-            currentSecret = null;
             updateUI();
             showResult({
                 action: 'logout',
