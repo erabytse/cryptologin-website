@@ -5,7 +5,7 @@
  * Elle appelle l'API CryptoLogin déployée sur votre VPS.
  */
 
-// Configuration - À MODIFIER AVEC VOTRE VPS
+// backend API URL 
 const API_BASE_URL = 'http://api.docudeeper.com';  
 
 // État de la session
@@ -43,7 +43,7 @@ function hideResult() {
 function getSecret() {
     const secret = secretInput.value.trim();
     if (secret.length < 32) {
-        setStatus('Le secret doit contenir au moins 32 caractères.', 'warning');
+        setStatus('Secret must be at least 32 characters.', 'warning');
         return null;
     }
     return secret;
@@ -58,12 +58,12 @@ function updateUI() {
         registerBtn.style.display = 'none';
         loginBtn.style.display = 'none';
         logoutBtn.style.display = 'inline-block';
-        setStatus('✅ Connecté. Session active.', 'success');
+        setStatus('✅ Connected. Session active.', 'success');
     } else {
         registerBtn.style.display = 'inline-block';
         loginBtn.style.display = 'inline-block';
         logoutBtn.style.display = 'none';
-        setStatus('🚀 Prêt à commencer', 'info');
+        setStatus('🚀 Ready to start', 'info');
     }
 }
 
@@ -95,6 +95,7 @@ async function apiCall(endpoint, method = 'POST', body = null, auth = false) {
         const data = await response.json();
         return { status: response.status, data };
     } catch (error) {
+        console.error('API call error:', error);
         return { status: 0, data: { error: error.message } };
     }
 }
@@ -109,7 +110,7 @@ registerBtn.addEventListener('click', async () => {
     if (!secret) return;
 
     hideResult();
-    setStatus('📝 Enregistrement en cours...', 'info');
+    setStatus('📝 Registering...', 'info');
 
     const result = await apiCall('/auth/register', 'POST', {
         master_secret: secret,
@@ -121,14 +122,14 @@ registerBtn.addEventListener('click', async () => {
 
     if (result.status === 200) {
         userId = result.data.data.user_id;
-        setStatus('✅ Utilisateur enregistré ! Connectez-vous maintenant.', 'success');
+        setStatus('✅ User registered! Please login.', 'success');
         showResult({
             action: 'register',
             user_id: userId,
-            message: 'Utilisateur créé avec succès'
+            message: 'User created successfully'
         }, true);
     } else {
-        setStatus(`❌ Erreur: ${result.data.detail || 'Erreur inconnue'}`, 'error');
+        setStatus(`❌ Error: ${result.data.detail || 'Unknown error'}`, 'error');
         showResult(result.data, false);
     }
 });
@@ -139,7 +140,7 @@ loginBtn.addEventListener('click', async () => {
     if (!secret) return;
 
     hideResult();
-    setStatus('🔑 Connexion en cours...', 'info');
+    setStatus('🔑 Logging in...', 'info');
 
     // Step 1: Initiate login
     const initResult = await apiCall('/auth/login/init', 'POST', {
@@ -147,14 +148,14 @@ loginBtn.addEventListener('click', async () => {
     });
 
     if (initResult.status !== 200) {
-        setStatus(`❌ Erreur: ${initResult.data.detail || 'Erreur inconnue'}`, 'error');
+        setStatus(`❌ Error: ${initResult.data.detail || 'Unknown error'}`, 'error');
         showResult(initResult.data, false);
         return;
     }
 
     const challenge = initResult.data.challenge;
 
-    // Step 2: Verify login (dans la vraie vie, l'utilisateur déchiffre le challenge)
+    // Step 2: Verify login
     const verifyResult = await apiCall('/auth/login/verify', 'POST', {
         master_secret: secret,
         challenge_response: challenge
@@ -169,20 +170,20 @@ loginBtn.addEventListener('click', async () => {
             session_id: sessionId,
             user_id: userId,
             expires_at: verifyResult.data.expires_at,
-            message: 'Authentification réussie'
+            message: 'Authentication successful'
         }, true);
 
-        // Récupérer les données utilisateur
+        // Get user data
         const dataResult = await apiCall(`/user/data?master_secret=${secret}`, 'GET', null, true);
         if (dataResult.status === 200) {
             showResult({
                 action: 'get_data',
                 data: dataResult.data.data,
-                message: 'Données récupérées avec succès'
+                message: 'Data retrieved successfully'
             }, true);
         }
     } else {
-        setStatus(`❌ Erreur: ${verifyResult.data.detail || 'Erreur inconnue'}`, 'error');
+        setStatus(`❌ Error: ${verifyResult.data.detail || 'Unknown error'}`, 'error');
         showResult(verifyResult.data, false);
     }
 });
@@ -190,11 +191,11 @@ loginBtn.addEventListener('click', async () => {
 // 3. LOGOUT
 logoutBtn.addEventListener('click', async () => {
     if (!sessionId) {
-        setStatus('Aucune session active.', 'warning');
+        setStatus('No active session.', 'warning');
         return;
     }
 
-    setStatus('👋 Déconnexion en cours...', 'info');
+    setStatus('👋 Logging out...', 'info');
 
     const result = await apiCall('/auth/logout', 'POST', null, true);
 
@@ -204,11 +205,11 @@ logoutBtn.addEventListener('click', async () => {
         updateUI();
         showResult({
             action: 'logout',
-            message: 'Déconnexion réussie'
+            message: 'Logout successful'
         }, true);
-        setStatus('👋 Déconnecté. À bientôt !', 'info');
+        setStatus('👋 Logged out. See you soon!', 'info');
     } else {
-        setStatus(`❌ Erreur: ${result.data.detail || 'Erreur inconnue'}`, 'error');
+        setStatus(`❌ Error: ${result.data.detail || 'Unknown error'}`, 'error');
         showResult(result.data, false);
     }
 });
