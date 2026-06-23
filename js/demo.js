@@ -110,7 +110,7 @@ function updateUI() {
 
 async function apiCall(endpoint, method = 'POST', body = null, auth = false) {
     const url = `${API_BASE_URL}${endpoint}`;
-    console.log(`📡 API Call: ${method} ${url}`);
+    console.log(`📡 API Call: ${method} https://url/to/api/with/master_secret=your_master_secret`); 
     
     const headers = {
         'Content-Type': 'application/json',
@@ -128,7 +128,7 @@ async function apiCall(endpoint, method = 'POST', body = null, auth = false) {
 
     if (body) {
         options.body = JSON.stringify(body);
-        console.log(`📦 Body:`, body);
+        console.log(`📦 Body:`, body.challenge_response);
     }
 
     try {
