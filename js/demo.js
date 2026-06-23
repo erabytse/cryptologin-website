@@ -6,7 +6,7 @@
  */
 
 // Configuration - À MODIFIER AVEC VOTRE VPS
-const API_BASE_URL = 'https://api.docudeeper.com';  
+const API_BASE_URL = 'http://api.docudeeper.com';  
 
 // État de la session
 let sessionId = null;
