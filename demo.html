@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CryptoLogin · Demo</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" href="assets/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="/" class="nav__logo">
+                    <span class="nav__logo-icon">🔐</span>
+                    CryptoLogin
+                </a>
+                <ul class="nav__links">
+                    <li><a href="index.html#features">Features</a></li>
+                    <li><a href="index.html#security">Security</a></li>
+                    <li><a href="index.html" class="btn btn--secondary">Home</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- DEMO SECTION -->
+    <section id="demo" class="demo" style="padding-top: 120px;">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-header__tag">🧪 Try it now</span>
+                <h2 class="section-header__title">Interactive <span class="highlight">Demo</span></h2>
+                <p class="section-header__subtitle">
+                    Create an account in 2 seconds. One secret. No personal data.
+                </p>
+            </div>
+
+            <div class="demo__container">
+                <!-- Status -->
+                <div id="demoStatus" class="demo__status demo__status--info">
+                    🚀 Ready to start
+                </div>
+
+                <!-- Form -->
+                <div class="demo__form">
+                    <div class="demo__field">
+                        <label for="demoSecret">Your Master Secret</label>
+                        <input type="password" id="demoSecret" placeholder="Minimum 32 characters" />
+                        <small>🔒 This secret never leaves your device. Stored securely.</small>
+                    </div>
+                    <div class="demo__actions">
+                        <button id="demoRegister" class="btn btn--primary">📝 Register</button>
+                        <button id="demoLogin" class="btn btn--secondary">🔑 Login</button>
+                        <button id="demoLogout" class="btn btn--danger" style="display:none;">🚪 Logout</button>
+                    </div>
+                </div>
+
+                <!-- Result -->
+                <div id="demoResult" class="demo__result" style="display:none;">
+                    <h4>📋 Result</h4>
+                    <pre id="demoOutput"><code></code></pre>
+                </div>
+
+                <div class="demo__info">
+                    <p>
+                        💡 <strong>How it works?</strong><br />
+                        Your secret is used to <strong>encrypt</strong> your data locally.
+                        The server only receives a <strong>challenge</strong> that only you can decrypt.
+                        This is the magic of <strong>Zero-Knowledge</strong>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <span class="footer__logo">🔐 CryptoLogin</span>
+                    <p>Zero-Knowledge Authentication.<br />An act of digital care.</p>
+                </div>
+                <div class="footer__links">
+                    <h4>Links</h4>
+                    <ul>
+                        <li><a href="https://github.com/erabytse/CryptoLogin">GitHub</a></li>
+                        <li><a href="https://pypi.org/project/cryptologin">PyPI</a></li>
+                        <li><a href="https://erabytse.github.io">ERABYTSE</a></li>
+                    </ul>
+                </div>
+                <div class="footer__philosophy">
+                    <h4>Philosophy</h4>
+                    <p>
+                        <em>"PoetryCoding™ : code as you write poetry — with restraint, with care."</em>
+                    </p>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2026 <a href="https://erabytse.github.io">ERABYTSE</a> — All rights reserved.</p>
+                <p>Made with ❤️ and <a href="https://erabytse.github.io">PoetryCoding</a>.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS - Assurez-vous que demo.js est bien chargé -->
+    <script src="js/demo.js"></script>
+    <!-- Vérification du chargement -->
+    <script>
+        console.log('🔐 demo.html loaded successfully');
+        console.log('📍 Checking if demo.js is loaded...');
+        if (typeof API_BASE_URL !== 'undefined') {
+            console.log(`✅ demo.js loaded. API URL: ${API_BASE_URL}`);
+        } else {
+            console.warn('⚠️ demo.js not loaded or API_BASE_URL not defined');
+        }
+    </script>
+</body>
+</html>
