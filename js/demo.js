@@ -9,12 +9,13 @@
 
 // Détection automatique de l'environnement
 const isLocal = window.location.hostname === '127.0.0.1' || 
-                window.location.hostname === 'localhost';
+                window.location.hostname === 'localhost' ||
+                window.location.hostname === 'localhost:8000';
 
 // URL de l'API selon l'environnement
 const API_BASE_URL = isLocal 
     ? 'http://localhost:8000/api/v1'  // Développement local
-    : 'http://api.docudeeper.com/api/v1';  // Production
+    : 'https://api.docudeeper.com/api/v1';  // Production
 
 console.log('🔐 CryptoLogin Demo loaded');
 console.log(`🌍 Environment: ${isLocal ? 'LOCAL' : 'PRODUCTION'}`);
