@@ -70,6 +70,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const secretInputLanding = document.querySelector('#demoSecret');
     const charCounterLanding = document.getElementById('charCounter');
 
+    const secretInputLanding2 = document.querySelector('#demoSecret2');
+    const charCounterLanding2 = document.getElementById('charCounter2');
+
     if (secretInputLanding && charCounterLanding) {
         function updateCharCounter() {
             const length = secretInputLanding.value.length;
@@ -91,5 +94,28 @@ document.addEventListener('DOMContentLoaded', () => {
         
         secretInputLanding.addEventListener('input', updateCharCounter);
         updateCharCounter();
+    }
+
+    if (secretInputLanding2 && charCounterLanding2) {
+        function updateCharCounter2() {
+            const length = secretInputLanding2.value.length;
+            const minLength = 32;
+            
+            charCounterLanding2.textContent = `${length}/${minLength}`;
+            charCounterLanding2.className = 'char-counter2';
+            
+            if (length === 0) {
+                // neutre
+            } else if (length >= minLength) {
+                charCounterLanding2.classList.add('valid');
+            } else if (length >= minLength * 0.7) {
+                charCounterLanding2.classList.add('warning');
+            } else {
+                charCounterLanding2.classList.add('invalid');
+            }
+        }
+        
+        secretInputLanding2.addEventListener('input', updateCharCounter2);
+        updateCharCounter2();
     }
 });

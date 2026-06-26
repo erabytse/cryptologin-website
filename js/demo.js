@@ -8,17 +8,17 @@
 // ================================================================
 
 // Détection automatique de l'environnement
-const isLocal = window.location.hostname === '127.0.0.1' || 
+const isLocal_v1 = window.location.hostname === '127.0.0.1' || 
                 window.location.hostname === 'localhost' ||
                 window.location.hostname === 'localhost:8000';
 
 // URL de l'API selon l'environnement
-const API_BASE_URL = isLocal 
+const API_BASE_URL = isLocal_v1 
     ? 'http://localhost:8000/api/v1'  // Développement local
     : 'https://api.docudeeper.com/api/v1';  // Production
 
 console.log('🔐 CryptoLogin Demo loaded');
-console.log(`🌍 Environment: ${isLocal ? 'LOCAL' : 'PRODUCTION'}`);
+console.log(`🌍 Environment: ${isLocal_v1 ? 'LOCAL' : 'PRODUCTION'}`);
 console.log(`🌐 API Base URL: ${API_BASE_URL}`);
 
 // ================================================================
@@ -110,7 +110,7 @@ function updateUI() {
 
 async function apiCall(endpoint, method = 'POST', body = null, auth = false) {
     const url = `${API_BASE_URL}${endpoint}`;
-    console.log(`📡 API Call: ${method} https://url/to/api/with/master_secret=your_master_secret`); 
+    console.log(`📡 API Call: ${method}`); 
     
     const headers = {
         'Content-Type': 'application/json',

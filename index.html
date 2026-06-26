@@ -26,7 +26,7 @@
     <header class="header">
         <div class="container">
             <nav class="nav">
-                <a href="/" class="nav__logo">
+                <a href="/index.html" class="nav__logo">
                     <span class="nav__logo-icon"><img src="./assets/images/logo.png" alt="CLog" style="width: 58px; height: auto;"></span>
                     CryptoLogin
                 </a>
@@ -58,6 +58,7 @@
                 </p>
                 <div class="hero__actions">
                     <a href="demo.html" class="btn btn--primary btn--large">Start the Demo</a>
+                    <a href="demo_v2.html" class="btn btn--primary btn--large">Start the Demo V2</a>
                     <a href="https://github.com/erabytse/CryptoLogin" target="_blank" class="btn btn--secondary btn--large">⭐ GitHub</a>
                 </div>
             </div>
@@ -285,7 +286,7 @@ user_id = auth.register(<span class="code-string">"my-secret"</span>)
                     🚀 Ready to start
                 </div>
 
-                <!-- Formulaire -->
+                <!-- Form v1 -->
                 <div class="demo__form">
                     <div class="demo__field">
                         <label for="demoSecret">Your Master Secret</label>
@@ -301,7 +302,7 @@ user_id = auth.register(<span class="code-string">"my-secret"</span>)
                         <small>🔒 This secret will never be sent in plain text. Stored securely.</small>
                     </div>
                     <div class="demo__actions">
-                        <button id="demoRegister" class="btn btn--primary">📝 Sign Up</button>
+                        <button id="demoRegister" class="btn btn--primary">📝 Register</button>
                         <button id="demoLogin" class="btn btn--secondary">🔑 Log In</button>
                         <button id="demoLogout" class="btn btn--danger" style="display:none;">🚪 Log Out</button>
                     </div>
@@ -311,6 +312,34 @@ user_id = auth.register(<span class="code-string">"my-secret"</span>)
                 <div id="demoResult" class="demo__result" style="display:none;">
                     <h4>📋 Results</h4>
                     <pre id="demoOutput"><code></code></pre>
+                </div>
+
+                <!-- Form v2-->
+                <div class="demo__form">
+                    <div class="demo__field">
+                        <label for="demoSecret2">Your Master Secret</label>
+                        <div class="demo__field-wrapper">
+                            <input 
+                                type="password" 
+                                id="demoSecret2" 
+                                placeholder="Minimum 32 characters" 
+                                autocomplete="off"
+                            />
+                            <span class="char-counter2" id="charCounter2">0/32</span>
+                        </div>
+                        <small>🔒 This secret never leaves your browser. It's used locally via Flash512 WASM.</small>
+                    </div>
+                    <div class="demo__actions">
+                        <button id="demoRegister2" class="btn btn--primary">📝 Register (V2)</button>
+                        <button id="demoLogin2" class="btn btn--secondary">🔑 Login (V2)</button>
+                        <button id="demoLogout2" class="btn btn--danger" style="display:none;">🚪 Logout</button>
+                    </div>
+                </div>
+
+                <!-- Results -->
+                <div id="demoResult2" class="demo__result" style="display:none;">
+                    <h4>📋 Results</h4>
+                    <pre id="demoOutput2"><code></code></pre>
                 </div>
 
                 <div class="demo__info">
@@ -358,6 +387,7 @@ user_id = auth.register(<span class="code-string">"my-secret"</span>)
     </footer>
 
     <script src="js/main.js"></script>
-    <script src="js/demo.js"></script>
+    <script type="module" src="js/demo.js"></script>
+    <script type="module" src="js/demo-v2.js"></script>
 </body>
 </html>
