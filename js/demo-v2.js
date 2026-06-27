@@ -349,61 +349,7 @@ logoutBtn.addEventListener('click', async () => {
         secretInputLanding2.addEventListener('input', updateCharCounter2);
         updateCharCounter2();
     }
-// const charCounter = document.getElementById('charCounter2');
 
-// if (secretInput && charCounter) {
-//     function updateCharCounter() {
-//         const length = secretInput.value.length;
-//         const minLength = 32;
-//         charCounter.textContent = `${length}/${minLength}`;
-//         charCounter.className = 'char-counter';
-//         if (length === 0) {
-//             // neutre
-//         } else if (length >= minLength) {
-//             charCounter.classList.add('valid');
-//         } else if (length >= minLength * 0.7) {
-//             charCounter.classList.add('warning');
-//         } else {
-//             charCounter.classList.add('invalid');
-//         }
-//     }
-//     secretInput.addEventListener('input', updateCharCounter);
-//     updateCharCounter();
-// }
-
-
-
-// if (secretInput2 && charCounter) {
-//     // Fonction de mise à jour du compteur
-//     function updateCharCounter() {
-//         const length = secretInput2.value.length;
-//         const minLength = 32;
-        
-//         // Mettre à jour le texte
-//         charCounter2.textContent = `${length}/${minLength}`;
-        
-//         // Mettre à jour les classes
-//         charCounter2.className = 'char-counter';
-        
-//         if (length === 0) {
-//             // Aucun caractère : neutre
-//         } else if (length >= minLength) {
-//             charCounter2.classList.add('valid');
-//         } else if (length >= minLength * 0.7) { // 70% de l'objectif
-//             charCounter2.classList.add('warning');
-//         } else {
-//             charCounter2.classList.add('invalid');
-//         }
-//     }
-    
-//     // Écouter les événements
-//     secretInput2.addEventListener('input', updateCharCounter);
-//     secretInput2.addEventListener('focus', updateCharCounter);
-//     secretInput2.addEventListener('blur', updateCharCounter);
-    
-    // Initialiser
-//     updateCharCounter();
-// }
 
 // ================================================================
 // INIT

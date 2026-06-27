@@ -314,6 +314,22 @@ user_id = auth.register(<span class="code-string">"my-secret"</span>)
                     <pre id="demoOutput"><code></code></pre>
                 </div>
 
+                <div class="demo__info">
+                    <p>
+                        💡 <strong>How does it work?</strong><br />
+                        Your secret is used to <strong>encrypt</strong> your data locally.
+                        The server only receives a <strong>challenge</strong> that you can decrypt alone.
+                        This is the magic of <strong>Passwordless Authentication without Password Storage</strong>.
+                    </p>
+                </div>
+
+                <hr color="#A2F3EB" style="margin: 4rem;" />
+
+                <!-- Message of status -->
+                <div id="demoStatus2" class="demo__status demo__status--info">
+                    🚀 Ready to start
+                </div>
+
                 <!-- Form v2-->
                 <div class="demo__form">
                     <div class="demo__field">
@@ -344,10 +360,15 @@ user_id = auth.register(<span class="code-string">"my-secret"</span>)
 
                 <div class="demo__info">
                     <p>
-                        💡 <strong>How does it work?</strong><br />
-                        Your secret is used to <strong>encrypt</strong> your data locally.
-                        The server only receives a <strong>challenge</strong> that you can decrypt alone.
-                        This is the magic of <strong>Passwordless Authentication without Password Storage</strong>.
+                        💡 <strong>How it works (V2 - Real Flow)</strong><br />
+                        1. Your secret is used <strong>locally</strong> to derive a <code>user_id</code> (via Web Crypto API).<br />
+                        2. The server only sees the <code>user_id</code> and an <strong>encrypted challenge</strong>.<br />
+                        3. The server decrypts the challenge using Flash512.<br />
+                        4. If the challenge matches, you are authenticated.<br />
+                        <strong>The master secret NEVER leaves your browser.</strong>
+                    </p>
+                    <p style="margin-top:12px; font-size:0.85rem; color:var(--color-text-light);">
+                        🛡️ Powered by <strong>Flash512-Vanguard</strong> (server-side) · AES-256-GCM + Argon2id
                     </p>
                 </div>
             </div>
