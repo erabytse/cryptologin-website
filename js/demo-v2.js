@@ -4,7 +4,7 @@
  */
 
 // Import SDK from CDN
-import { createClient, deriveUserId, computeHmac } from 'https://cdn.jsdelivr.net/npm/cryptologin-client@1.2.1/+esm';
+import { createClient, deriveUserId, computeHmac } from 'https://cdn.jsdelivr.net/npm/cryptologin-client@1.2.3/+esm';
 
 // ================================================================
 // CONFIGURATION
