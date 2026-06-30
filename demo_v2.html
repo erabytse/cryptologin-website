@@ -1,103 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CryptoLogin · Demo V2</title>
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="icon" href="assets/favicon.ico" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&display=swap" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CryptoLogin · Demo V2 - Zero-Knowledge Authentication</title>
+    <meta name="description" content="CryptoLogin V2 Demo - Zero-knowledge authentication with HMAC. The master secret never leaves your browser.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
 </head>
 <body>
 
-    <!-- ============================================================ -->
-    <!-- HEADER                                                         -->
-    <!-- ============================================================ -->
+    <!-- HEADER -->
     <header class="header">
         <div class="container">
             <nav class="nav">
-                <a href="/" class="nav__logo">
-                    <span class="nav__logo-icon">🔐</span>
+                <a href="index.html" class="nav__logo">
+                    <img src="assets/images/logo.png" alt="CryptoLogin" height="32">
                     CryptoLogin
                 </a>
                 <ul class="nav__links">
                     <li><a href="index.html#features">Features</a></li>
                     <li><a href="index.html#security">Security</a></li>
-                    <li><a href="index.html" class="btn btn--secondary">Home</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="demo.html" class="btn btn--secondary">Demo V1 (Legacy)</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- ============================================================ -->
-    <!-- DEMO SECTION                                                   -->
-    <!-- ============================================================ -->
-    <section id="demo" class="demo" style="padding-top: 120px;">
+    <!-- SUCCESS BANNER -->
+    <div style="background: var(--color-success); color: #fff; padding: 16px 0; text-align: center; font-weight: 600;">
+        <div class="container">
+            ✅ <strong>Recommended Version:</strong> This demo uses V2 with HMAC-based zero-knowledge authentication.
+            The <code style="background: rgba(0,0,0,0.2); padding: 2px 8px; border-radius: 4px;">master_secret</code> never leaves your browser.
+        </div>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero" style="min-height: auto; padding: 80px 0;">
+        <div class="container">
+            <div>
+                <span class="hero__badge">🧪 Interactive Demo V2</span>
+                <h1 class="hero__title">
+                    Zero-Knowledge <span class="hero__title-highlight">Authentication</span>
+                </h1>
+                <p class="hero__subtitle">
+                    Passwordless Authentication · The master secret never leaves your browser.
+                    <br><br>
+                    Authentication proven cryptographically via HMAC-SHA256.
+                    The server verifies without knowing your secret.
+                </p>
+                <div class="hero__actions">
+                    <a href="https://github.com/erabytse/CryptoLogin#quick-start" class="btn btn--primary btn--large" target="_blank">View Quick Start →</a>
+                    <a href="index.html" class="btn btn--secondary btn--large">← Back to Home</a>
+                </div>
+            </div>
+            <div class="hero__code-block">
+                <pre><code><span class="code-comment"># V2 Zero-Knowledge Flow</span>
+<span class="code-keyword">1.</span> Client derives user_id from master_secret
+   <span class="code-comment"># PBKDF2-SHA512, 100k iterations</span>
+
+<span class="code-keyword">2.</span> Server generates random challenge
+   <span class="code-comment"># 64-char hex string</span>
+
+<span class="code-keyword">3.</span> Client computes HMAC(challenge, user_id)
+   <span class="code-comment"># HMAC-SHA256, client-side only</span>
+
+<span class="code-keyword">4.</span> Server verifies HMAC
+   <span class="code-comment"># Constant-time comparison</span>
+
+<span class="code-comment"># Result: Authenticated ✅</span>
+<span class="code-comment"># Server knows: NOTHING about your secret</span></code></pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECURITY INFO -->
+    <section class="security">
         <div class="container">
             <div class="section-header">
-                <span class="section-header__tag">🧪 Try it now</span>
-                <h2 class="section-header__title">Interactive <span class="highlight">Demo V2</span></h2>
-                <p class="section-header__subtitle">
-                    <strong>Passwordless Authentication</strong> · The master secret never leaves your browser.
-                </p>
+                <span class="section-header__tag"> Security Model</span>
+                <h2 class="section-header__title">How V2 Works</h2>
             </div>
-
-            <div class="demo__container">
-                <!-- Status -->
-                <div id="demoStatus2" class="demo__status demo__status--info">
-                    🚀 Ready to start
+            <div class="security__grid">
+                <div class="security__card">
+                    <h3>️ Client-Side</h3>
+                    <p>Derives <code>user_id</code> from <code>master_secret</code> using PBKDF2-SHA512 (100k iterations).</p>
+                    <span class="security__badge">Web Crypto API</span>
                 </div>
-
-                <!-- Form -->
-                <div class="demo__form">
-                    <div class="demo__field">
-                        <label for="demoSecret2">Your Master Secret</label>
-                        <div class="demo__field-wrapper">
-                            <input 
-                                type="password" 
-                                id="demoSecret2" 
-                                placeholder="Minimum 32 characters" 
-                                autocomplete="off"
-                            />
-                            <span class="char-counter2" id="charCounter2">0/32</span>
-                        </div>
-                        <small>🔒 This secret is used locally to derive your user_id. It never leaves your browser.</small>
-                    </div>
-                    <div class="demo__actions">
-                        <button id="demoRegister2" class="btn btn--primary">📝 Register (V2)</button>
-                        <button id="demoLogin2" class="btn btn--secondary">🔑 Login (V2)</button>
-                        <button id="demoLogout2" class="btn btn--danger" style="display:none;">🚪 Logout</button>
-                    </div>
+                <div class="security__card">
+                    <h3>🔐 HMAC Computation</h3>
+                    <p>Computes HMAC-SHA256(challenge, user_id) locally. The secret never leaves the browser.</p>
+                    <span class="security__badge">RFC 2104</span>
                 </div>
-
-                <!-- Result -->
-                <div id="demoResult2" class="demo__result" style="display:none;">
-                    <h4>📋 Result</h4>
-                    <pre id="demoOutput2"><code></code></pre>
+                <div class="security__card">
+                    <h3>🌐 Server-Side</h3>
+                    <p>Stores only <code>user_id</code> (derived). Generates random challenges. Verifies HMAC.</p>
+                    <span class="security__badge">Zero-knowledge</span>
                 </div>
-
-                <div class="demo__info">
-                    <p>
-                        💡 <strong>How it works (V2 - Real Flow)</strong><br />
-                        1. Your secret is used <strong>locally</strong> to derive a <code>user_id</code> (via Web Crypto API).<br />
-                        2. The server only sees the <code>user_id</code> and an <strong>encrypted challenge</strong>.<br />
-                        3. The server decrypts the challenge using Flash512.<br />
-                        4. If the challenge matches, you are authenticated.<br />
-                        <strong>The master secret NEVER leaves your browser.</strong>
-                    </p>
-                    <p style="margin-top:12px; font-size:0.85rem; color:var(--color-text-light);">
-                        🛡️ Powered by <strong>Flash512-Vanguard</strong> (server-side) · AES-256-GCM + Argon2id
-                    </p>
+                <div class="security__card">
+                    <h3>🛡️ Breach-Resistant</h3>
+                    <p>If the database is leaked, there's nothing to exploit. No hashes, no emails, no secrets.</p>
+                    <span class="security__badge">Nothing to steal</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ============================================================ -->
-    <!-- FOOTER                                                         -->
-    <!-- ============================================================ -->
+    <!-- DEMO V2 -->
+    <section class="demo">
+        <div class="container demo__container">
+            <div class="section-header">
+                <span class="section-header__tag">🧪 Try it Now</span>
+                <h2 class="section-header__title">Interactive Demo V2</h2>
+                <p class="section-header__subtitle">Create an account in 2 seconds. One master secret. No personal data.</p>
+            </div>
+
+            <div class="demo__status demo__status--info">🚀 Ready to start</div>
+
+            <div class="demo__form">
+                <div class="demo__field">
+                    <label for="demoSecret2">Your Master Secret</label>
+                    <div class="demo__field-wrapper">
+                        <input type="password" id="demoSecret2" placeholder="Enter your master secret (min 32 chars)">
+                        <span class="char-counter2" id="charCounter2">0/32</span>
+                    </div>
+                    <small>🔒 This secret is used locally to derive your user_id. It never leaves your browser.</small>
+                </div>
+                <div class="demo__actions">
+                    <button id="demoRegister2" class="btn btn--primary">📝 Register (V2)</button>
+                    <button id="demoLogin2" class="btn btn--secondary">🔑 Login (V2)</button>
+                    <button id="demoLogout2" class="btn btn--danger">🚪 Logout</button>
+                </div>
+            </div>
+
+            <div class="demo__result" id="demoResult2" style="display:none;">
+                <h4> Result</h4>
+                <pre id="demoOutput2"></pre>
+            </div>
+
+            <div class="demo__info">
+                <p><strong>💡 How it works (V2 - Real Flow)</strong></p>
+                <p>1. Your secret is used locally to derive a <code>user_id</code> (via Web Crypto API).<br>
+                2. The server only sees the <code>user_id</code> and generates a random challenge.<br>
+                3. Your browser computes HMAC-SHA256(challenge, user_id).<br>
+                4. The server verifies the HMAC without knowing your secret.<br><br>
+                <strong>The master secret NEVER leaves your browser.</strong></p>
+            </div>
+
+            <div class="demo__info" style="border-left: 4px solid var(--color-warning);">
+                <p><strong>⚠️ Important</strong></p>
+                <p>If you lose your <code>master_secret</code>, you cannot recover your account. There is no "Forgot Password" because the server doesn't know your secret. This is the trade-off for zero-knowledge security.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
     <footer class="footer">
         <div class="container">
             <div class="footer__grid">
@@ -108,28 +166,24 @@
                 <div class="footer__links">
                     <h4>Links</h4>
                     <ul>
-                        <li><a href="https://github.com/erabytse/CryptoLogin">GitHub</a></li>
-                        <li><a href="https://pypi.org/project/cryptologin">PyPI</a></li>
-                        <li><a href="https://erabytse.github.io">ERABYTSE</a></li>
+                        <li><a href="https://github.com/erabytse/CryptoLogin" target="_blank">GitHub</a></li>
+                        <li><a href="https://pypi.org/project/cryptologin/" target="_blank">PyPI</a></li>
+                        <li><a href="https://www.npmjs.com/package/cryptologin-client" target="_blank">npm</a></li>
+                        <li><a href="https://erabytse.github.io" target="_blank">ERABYTSE</a></li>
                     </ul>
                 </div>
                 <div class="footer__philosophy">
                     <h4>Philosophy</h4>
-                    <p>
-                        <em>"PoetryCoding™ : code as you write poetry — with restraint, with care."</em>
-                    </p>
+                    <p>"PoetryCoding™ : code as you write poetry — with restraint, with care."</p>
                 </div>
             </div>
             <div class="footer__bottom">
-                <p>&copy; 2026 <a href="https://erabytse.github.io">ERABYTSE</a> — All rights reserved.</p>
-                <p>Made with ❤️ and <a href="https://erabytse.github.io">PoetryCoding</a>.</p>
+                <p>© 2026 <a href="https://erabytse.github.io" target="_blank">ERABYTSE</a> — All rights reserved.</p>
+                <p>Made with ❤️ and <a href="https://erabytse.github.io" target="_blank">PoetryCoding</a>.</p>
             </div>
         </div>
     </footer>
 
-    <!-- ============================================================ -->
-    <!-- SCRIPTS                                                        -->
-    <!-- ============================================================ -->
     <script type="module" src="js/demo-v2.js"></script>
 </body>
 </html>

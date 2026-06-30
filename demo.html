@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CryptoLogin · Demo</title>
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="icon" href="assets/favicon.ico" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&display=swap" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CryptoLogin · Demo V1 (Legacy)</title>
+    <meta name="description" content="CryptoLogin V1 Demo - Legacy challenge-response authentication">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
 </head>
 <body>
 
@@ -16,72 +14,99 @@
     <header class="header">
         <div class="container">
             <nav class="nav">
-                <a href="/" class="nav__logo">
-                    <span class="nav__logo-icon"><img src="./assets/images/logo.png" alt="CLog" style="width: 58px; height: auto;"></span>
+                <a href="index.html" class="nav__logo">
+                    <img src="assets/images/logo.png" alt="CryptoLogin" height="32">
                     CryptoLogin
                 </a>
                 <ul class="nav__links">
                     <li><a href="index.html#features">Features</a></li>
                     <li><a href="index.html#security">Security</a></li>
-                    <li><a href="index.html" class="btn btn--secondary">Home</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="demo_v2.html" class="btn btn--primary">🧪 Try V2</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- DEMO SECTION -->
-    <section id="demo" class="demo" style="padding-top: 120px;">
+    <!-- WARNING BANNER -->
+    <div style="background: var(--color-warning); color: var(--color-bg); padding: 16px 0; text-align: center; font-weight: 600;">
         <div class="container">
-            <div class="section-header">
-                <span class="section-header__tag">🧪 Try it now</span>
-                <h2 class="section-header__title">Interactive <span class="highlight">Demo</span></h2>
-                <p class="section-header__subtitle">
+            ⚠️ <strong>Legacy Version:</strong> This demo uses V1 (challenge-response).
+            For the recommended zero-knowledge flow, use
+            <a href="demo_v2.html" style="color: var(--color-bg); text-decoration: underline;"><strong>Demo V2</strong></a>.
+        </div>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero" style="min-height: auto; padding: 80px 0;">
+        <div class="container">
+            <div>
+                <span class="hero__badge"> Interactive Demo V1</span>
+                <h1 class="hero__title">
+                    Legacy <span class="hero__title-highlight">Challenge-Response</span>
+                </h1>
+                <p class="hero__subtitle">
                     Create an account in 2 seconds. One secret. No personal data.
+                    <br><br>
+                    <strong>Note:</strong> V1 uses encrypted challenges. V2 uses HMAC-based zero-knowledge authentication (recommended).
                 </p>
+                <div class="hero__actions">
+                    <a href="demo_v2.html" class="btn btn--primary btn--large">Try Demo V2 →</a>
+                    <a href="index.html" class="btn btn--secondary btn--large">← Back to Home</a>
+                </div>
+            </div>
+            <div class="hero__code-block">
+                <pre><code><span class="code-comment"># V1 Flow (Legacy)</span>
+<span class="code-keyword">1.</span> Client derives user_id from master_secret
+<span class="code-keyword">2.</span> Server generates encrypted challenge
+<span class="code-keyword">3.</span> Client decrypts challenge locally
+<span class="code-keyword">4.</span> Client sends decrypted challenge back
+<span class="code-keyword">5.</span> Server verifies the match
+
+<span class="code-comment"># V2 Flow (Recommended)</span>
+<span class="code-keyword">1.</span> Client derives user_id from master_secret
+<span class="code-keyword">2.</span> Server generates plaintext challenge
+<span class="code-keyword">3.</span> Client computes HMAC(challenge, user_id)
+<span class="code-keyword">4.</span> Server verifies HMAC (zero-knowledge)</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- DEMO V1 -->
+    <section class="demo">
+        <div class="container demo__container">
+            <div class="section-header">
+                <span class="section-header__tag">🧪 Demo V1</span>
+                <h2 class="section-header__title">Interactive Demo</h2>
+                <p class="section-header__subtitle">Create an account in 2 seconds. One secret. No personal data.</p>
             </div>
 
-            <div class="demo__container">
-                <!-- Status -->
-                <div id="demoStatus" class="demo__status demo__status--info">
-                    🚀 Ready to start
-                </div>
+            <div class="demo__status demo__status--info">🚀 Ready to start</div>
 
-                <!-- Form -->
-                <div class="demo__form">
-                    <div class="demo__field">
-                        <label for="demoSecret">Your Master Secret</label>
-                        <div class="demo__field-wrapper">
-                            <input 
-                                type="password" 
-                                id="demoSecret" 
-                                placeholder="Minimum 32 characters" 
-                                autocomplete="off"
-                            />
-                            <span class="char-counter" id="charCounter">0/32</span>
-                        </div>
-                        <small>🔒 This secret never leaves your device. Stored securely.</small>
+            <div class="demo__form">
+                <div class="demo__field">
+                    <label for="demoSecret">Your Master Secret</label>
+                    <div class="demo__field-wrapper">
+                        <input type="password" id="demoSecret" placeholder="Enter your master secret (min 32 chars)">
+                        <span class="char-counter" id="charCounter">0/32</span>
                     </div>
-                    <div class="demo__actions">
-                        <button id="demoRegister" class="btn btn--primary">📝 Register</button>
-                        <button id="demoLogin" class="btn btn--secondary">🔑 Login</button>
-                        <button id="demoLogout" class="btn btn--danger" style="display:none;">🚪 Logout</button>
-                    </div>
+                    <small> This secret never leaves your device. Stored securely.</small>
                 </div>
+                <div class="demo__actions">
+                    <button id="demoRegister" class="btn btn--primary"> Register</button>
+                    <button id="demoLogin" class="btn btn--secondary"> Login</button>
+                    <button id="demoLogout" class="btn btn--danger">🚪 Logout</button>
+                </div>
+            </div>
 
-                <!-- Result -->
-                <div id="demoResult" class="demo__result" style="display:none;">
-                    <h4>📋 Result</h4>
-                    <pre id="demoOutput"><code></code></pre>
-                </div>
+            <div class="demo__result" id="demoResult" style="display:none;">
+                <h4>📋 Result</h4>
+                <pre id="demoOutput"></pre>
+            </div>
 
-                <div class="demo__info">
-                    <p>
-                        💡 <strong>How it works?</strong><br />
-                        Your secret is used to <strong>encrypt</strong> your data locally.
-                        The server only receives a <strong>challenge</strong> that only you can decrypt.
-                        This is the magic of <strong>Passwordless Authentication without Password Storage</strong>.
-                    </p>
-                </div>
+            <div class="demo__info">
+                <p><strong>💡 How it works?</strong></p>
+                <p>Your secret is used to encrypt your data locally. The server only receives a challenge that only you can decrypt. This is the magic of Passwordless Authentication without Password Storage.</p>
             </div>
         </div>
     </section>
@@ -92,42 +117,28 @@
             <div class="footer__grid">
                 <div class="footer__brand">
                     <span class="footer__logo">🔐 CryptoLogin</span>
-                    <p>Passwordless Authentication.<br />An act of digital care.</p>
+                    <p>Passwordless Authentication.<br>An act of digital care.</p>
                 </div>
                 <div class="footer__links">
                     <h4>Links</h4>
                     <ul>
-                        <li><a href="https://github.com/erabytse/CryptoLogin">GitHub</a></li>
-                        <li><a href="https://pypi.org/project/cryptologin">PyPI</a></li>
-                        <li><a href="https://erabytse.github.io">ERABYTSE</a></li>
+                        <li><a href="https://github.com/erabytse/CryptoLogin" target="_blank">GitHub</a></li>
+                        <li><a href="https://pypi.org/project/cryptologin/" target="_blank">PyPI</a></li>
+                        <li><a href="https://erabytse.github.io" target="_blank">ERABYTSE</a></li>
                     </ul>
                 </div>
                 <div class="footer__philosophy">
                     <h4>Philosophy</h4>
-                    <p>
-                        <em>"PoetryCoding™ : code as you write poetry — with restraint, with care."</em>
-                    </p>
+                    <p>"PoetryCoding™ : code as you write poetry — with restraint, with care."</p>
                 </div>
             </div>
             <div class="footer__bottom">
-                <p>&copy; 2026 <a href="https://erabytse.github.io">ERABYTSE</a> — All rights reserved.</p>
-                <p>Made with ❤️ and <a href="https://erabytse.github.io">PoetryCoding</a>.</p>
+                <p>© 2026 <a href="https://erabytse.github.io" target="_blank">ERABYTSE</a> — All rights reserved.</p>
+                <p>Made with ❤️ and <a href="https://erabytse.github.io" target="_blank">PoetryCoding</a>.</p>
             </div>
         </div>
     </footer>
 
-    <!-- SCRIPTS -->
-    
     <script src="js/demo.js"></script>
-    <script>
-        console.log('🔐 demo.html loaded successfully');
-        console.log('📍 Checking if demo.js is loaded...');
-        if (typeof API_BASE_URL !== 'undefined') {
-            console.log(`✅ demo.js loaded. API URL: ${API_BASE_URL}`);
-        } else {
-            console.warn('⚠️ demo.js not loaded or API_BASE_URL not defined');
-        }
-    </script>
-    
 </body>
 </html>

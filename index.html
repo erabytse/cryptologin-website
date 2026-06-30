@@ -1,204 +1,178 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CryptoLogin · Authentification Passwordless</title>
-    <meta name="description" content="CryptoLogin : Authentication without an email address or password. Just your secret. Passwordless Authentication without Password Storage, military-grade encryption." />
-    <link rel="stylesheet" href="./css/style.css" />
-    <link rel="icon" href="./assets/favicon.ico" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&display=swap" rel="stylesheet" />
-
-    <link rel="icon" type="image/png" href="./assets/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />
-    <link rel="shortcut icon" href="./assets/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png" />
-    <meta name="apple-mobile-web-app-title" content="CryptoLogin" />
-    <!-- <link rel="manifest" href="./assets/site.webmanifest" /> -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CryptoLogin · Zero-Storage Authentication</title>
+    <meta name="description" content="Passwordless authentication where the server stores zero secrets. No hashes, no emails, no breaches.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
 </head>
 <body>
 
-    <!-- ============================================================ -->
-    <!-- HEADER / NAVIGATION                                            -->
-    <!-- ============================================================ -->
+    <!-- HEADER -->
     <header class="header">
         <div class="container">
             <nav class="nav">
-                <a href="/index.html" class="nav__logo">
-                    <span class="nav__logo-icon"><img src="./assets/images/logo.png" alt="CLog" style="width: 58px; height: auto;"></span>
+                <a href="index.html" class="nav__logo">
+                    <img src="assets/images/logo.png" alt="CryptoLogin" height="32">
                     CryptoLogin
                 </a>
                 <ul class="nav__links">
                     <li><a href="#philosophie">Philosophy</a></li>
                     <li><a href="#features">Features</a></li>
                     <li><a href="#security">Security</a></li>
-                    <li><a href="#demo" class="btn btn--primary">Try the Demo</a></li>
+                    <li><a href="demo_v2.html" class="btn btn--primary">🧪 Try it now</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- ============================================================ -->
-    <!-- HERO                                                           -->
-    <!-- ============================================================ -->
+    <!-- HERO -->
     <section class="hero">
         <div class="container">
-            <div class="hero__content">
-                <span class="hero__badge">✨ Passwordless Authentication</span>
+            <div>
+                <span class="hero__badge">✨ Zero-Storage Authentication</span>
                 <h1 class="hero__title">
-                    The authentication <br />
-                    <span class="hero__title-highlight">reinvented</span>
+                    The server knows <span class="hero__title-highlight">nothing</span>.
+                    <br>Not even a hash.
                 </h1>
                 <p class="hero__subtitle">
-                    No more email or password. <br />
-                    Just your secret. <br />
-                    <span class="hero__subtitle-highlight">One. For your entire digital life.</span>
+                    CryptoLogin is a passwordless authentication system where the server stores
+                    <span class="hero__subtitle-highlight">zero secrets</span>.
+                    No password hashes. No emails. No recovery tokens.
+                    <br>Just a <code>user_id</code> derived from your <code>master_secret</code>,
+                    and authentication proven cryptographically via HMAC.
                 </p>
                 <div class="hero__actions">
-                    <a href="demo.html" class="btn btn--primary btn--large">Start the Demo</a>
                     <a href="demo_v2.html" class="btn btn--primary btn--large">Start the Demo V2</a>
-                    <a href="https://github.com/erabytse/CryptoLogin" target="_blank" class="btn btn--secondary btn--large">⭐ GitHub</a>
+                    <a href="https://github.com/erabytse/CryptoLogin" class="btn btn--secondary btn--large" target="_blank">⭐ GitHub</a>
                 </div>
             </div>
-            <div class="hero__visual">
-                <div class="hero__code-block">
-                    <pre><code><span class="code-comment"># A revolution, in one line</span>
+            <div class="hero__code-block">
+                <pre><code><span class="code-comment"># Zero-Storage Authentication in 3 lines</span>
 <span class="code-keyword">from</span> cryptologin <span class="code-keyword">import</span> CryptoLogin
 
 auth = CryptoLogin()
 user_id = auth.register(<span class="code-string">"my-secret"</span>)
-<span class="code-comment"># That's it. Nothing else.</span></code></pre>
-                </div>
+
+<span class="code-comment"># That's it. The server stores nothing.</span>
+<span class="code-comment"># No hashes. No emails. No passwords.</span></code></pre>
             </div>
         </div>
     </section>
 
-    <!-- ============================================================ -->
-    <!-- PHILOSOPHIE                                                   -->
-    <!-- ============================================================ -->
-    <section id="philosophie" class="philosophie">
+    <!-- PHILOSOPHIE -->
+    <section class="philosophie" id="philosophie">
         <div class="container">
             <div class="section-header">
-                <span class="section-header__tag">💭 Our Vision</span>
-                <h2 class="section-header__title">Authentication as a <span class="highlight">Act of Care</span></h2>
+                <span class="section-header__tag">Our Vision</span>
+                <h2 class="section-header__title">Authentication as an Act of Care</h2>
             </div>
             <div class="philosophie__grid">
                 <div class="philosophie__card">
                     <div class="philosophie__icon">🕊️</div>
                     <h3>Lightness</h3>
-                    <p>Just one secret to remember. No more forgotten passwords, no more lost emails.</p>
+                    <p>One secret to remember. No more forgotten passwords, no more lost emails, no more password managers.</p>
                 </div>
                 <div class="philosophie__card">
                     <div class="philosophie__icon">🛡️</div>
                     <h3>Protection</h3>
-                    <p>Your secret never leaves your mind. The server knows nothing about it. Passwordless Authentication without Password Storage.</p>
+                    <p>Your secret never leaves your device. The server knows nothing about it. Zero-knowledge inspired.</p>
                 </div>
                 <div class="philosophie__card">
                     <div class="philosophie__icon">🌱</div>
                     <h3>Durability</h3>
-                    <p>A system that respects your data. No trackers, no dependencies on third parties.</p>
+                    <p>A system that respects your data. No trackers, no third-party dependencies, no vendor lock-in.</p>
                 </div>
             </div>
             <div class="philosophie__quote">
-                <blockquote>
-                    "PoetryCoding™ It is not a method. It is an approach. Code as you would write poetry: with restraint, with care."
-                </blockquote>
-                <cite>— erabytse, founder of the movement PoetryCoding</cite>
-            </div>
-            <div align="center" py-3>
-                <img src="./assets/images/CryptoLogin.gif" width="320" height="170" alt="CryptoLogin"/>
+                <blockquote>"PoetryCoding™ — It is not a method. It is an approach. Code as you would write poetry: with restraint, with care."</blockquote>
+                <cite>— erabytse, founder of the PoetryCoding movement</cite>
             </div>
         </div>
     </section>
 
-    <!-- ============================================================ -->
-    <!-- FONCTIONNALITÉS                                               -->
-    <!-- ============================================================ -->
-    <section id="features" class="features">
+    <!-- FEATURES -->
+    <section class="features" id="features">
         <div class="container">
             <div class="section-header">
-                <span class="section-header__tag">⚡ The Revolution</span>
-                <h2 class="section-header__title">Why <span class="highlight">CryptoLogin</span> Changes Everything</h2>
+                <span class="section-header__tag">⚡ Why CryptoLogin</span>
+                <h2 class="section-header__title">What Makes It Different</h2>
             </div>
             <div class="features__grid">
                 <div class="features__item">
                     <div class="features__icon">🔐</div>
-                    <h3>Passwordless Authentication without Password Storage</h3>
-                    <p>The server never knows your secret. Absolute security.</p>
+                    <h3>Zero-Storage Authentication</h3>
+                    <p>The server never stores your secret. Only a derived <code>user_id</code> and temporary challenges.</p>
                 </div>
                 <div class="features__item">
                     <div class="features__icon">📧</div>
-                    <h3>No Email</h3>
-                    <p>Done with spam, verifications, and lost passwords.</p>
+                    <h3>No Email Required</h3>
+                    <p>Done with spam, verifications, and lost passwords. Your identity is your secret.</p>
                 </div>
                 <div class="features__item">
                     <div class="features__icon">🔑</div>
-                    <h3>No Password</h3>
-                    <p>Just one master secret. For your entire digital life.</p>
+                    <h3>One Master Secret</h3>
+                    <p>Just one secret for your entire digital life. Derived locally via PBKDF2-SHA512.</p>
                 </div>
                 <div class="features__item">
-                    <div class="features__icon">🛡️</div>
-                    <h3>Military Encryption</h3>
-                    <p>AES-256-GCM, Argon2id, SecureBuffer. The highest standards.</p>
+                    <div class="features__icon">️</div>
+                    <h3>Standard Primitives</h3>
+                    <p>Built on <code>hashlib</code>, <code>hmac</code>, and Web Crypto API. No custom cryptography.</p>
                 </div>
                 <div class="features__item">
-                    <div class="features__icon">🚀</div>
-                    <h3>2 Seconds</h3>
-                    <p>Account creation in one click. Authentication in an instant.</p>
+                    <div class="features__icon"></div>
+                    <h3>Fast & Simple</h3>
+                    <p>HMAC-SHA256 verification (~1ms). 3 API endpoints. 2 SDKs (Python + JavaScript).</p>
                 </div>
                 <div class="features__item">
                     <div class="features__icon">🌍</div>
-                    <h3>Universal</h3>
-                    <p>One secret for all your accounts. Simple, effective.</p>
+                    <h3>Open Source & Self-Hosted</h3>
+                    <p>MIT License. Run it on your own infrastructure. No vendor lock-in, no SaaS dependency.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ============================================================ -->
-    <!-- SÉCURITÉ                                                      -->
-    <!-- ============================================================ -->
-    <section id="security" class="security">
+    <!-- SECURITY -->
+    <section class="security" id="security">
         <div class="container">
             <div class="section-header">
-                <span class="section-header__tag">🔒 Security</span>
-                <h2 class="section-header__title">A <span class="highlight">Digital Fortress</span></h2>
+                <span class="section-header__tag">🔒 Security Model</span>
+                <h2 class="section-header__title">A Digital Fortress</h2>
             </div>
             <div class="security__grid">
                 <div class="security__card">
-                    <h3>AES-256-GCM</h3>
-                    <p>NIST encryption standard. Used by governments and military.</p>
-                    <span class="security__badge">✅ FIPS 197</span>
+                    <h3>PBKDF2-SHA512</h3>
+                    <p>100,000 iterations for key derivation. Memory-hard, resistant to GPU attacks.</p>
+                    <span class="security__badge">NIST SP 800-132</span>
                 </div>
                 <div class="security__card">
-                    <h3>Argon2id</h3>
-                    <p>The most resistant key derivation function. Protection against GPU/ASIC attacks.</p>
-                    <span class="security__badge">✅ OWASP ASVS</span>
+                    <h3>HMAC-SHA256</h3>
+                    <p>Challenge-response authentication. Constant-time comparison to prevent timing attacks.</p>
+                    <span class="security__badge">RFC 2104</span>
                 </div>
                 <div class="security__card">
-                    <h3>SecureBuffer</h3>
-                    <p>Automatic wiping of sensitive data in memory. Military-grade hygiene.</p>
-                    <span class="security__badge">✅ Protected Memory</span>
+                    <h3>Zero-Knowledge Inspired</h3>
+                    <p>The <code>master_secret</code> never leaves the client. The server only knows a derived <code>user_id</code>.</p>
+                    <span class="security__badge">Client-side only</span>
                 </div>
                 <div class="security__card">
-                    <h3>Passwordless Authentication</h3>
-                    <p>The secret never leaves the user. The server only stores encrypted data.</p>
-                    <span class="security__badge">✅ GDPR compliant</span>
+                    <h3>Breach-Resistant</h3>
+                    <p>If the database is leaked, there's nothing to exploit. No hashes, no emails, no secrets.</p>
+                    <span class="security__badge">Nothing to steal</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ============================================================ -->
-    <!-- COMPARAISON                                                   -->
-    <!-- ============================================================ -->
+    <!-- COMPARISON -->
     <section class="comparison">
         <div class="container">
             <div class="section-header">
                 <span class="section-header__tag">📊 Comparison</span>
-                <h2 class="section-header__title">CryptoLogin vs <span class="highlight">the rest of the world</span></h2>
+                <h2 class="section-header__title">CryptoLogin vs the Rest</h2>
             </div>
             <div class="comparison__table-wrapper">
                 <table class="comparison__table">
@@ -213,23 +187,23 @@ user_id = auth.register(<span class="code-string">"my-secret"</span>)
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Passwordless Authentication</td>
+                            <td>Zero-Storage Auth</td>
                             <td class="comparison__yes">✅</td>
                             <td class="comparison__no">❌</td>
                             <td class="comparison__no">❌</td>
                             <td class="comparison__no">❌</td>
                         </tr>
                         <tr>
-                            <td>Without Email</td>
+                            <td>No Email Required</td>
                             <td class="comparison__yes">✅</td>
                             <td class="comparison__no">❌</td>
                             <td class="comparison__no">❌</td>
                             <td class="comparison__no">❌</td>
                         </tr>
                         <tr>
-                            <td>Without Password</td>
+                            <td>No Password Storage</td>
                             <td class="comparison__yes">✅</td>
-                            <td class="comparison__no">❌</td>
+                            <td class="comparison__no"></td>
                             <td class="comparison__no">❌</td>
                             <td class="comparison__no">❌</td>
                         </tr>
@@ -237,26 +211,26 @@ user_id = auth.register(<span class="code-string">"my-secret"</span>)
                             <td>Open Source</td>
                             <td class="comparison__yes">✅</td>
                             <td class="comparison__no">❌</td>
-                            <td class="comparison__no">❌</td>
+                            <td class="comparison__no"></td>
                             <td class="comparison__no">❌</td>
                         </tr>
                         <tr>
-                            <td>Self-hosting</td>
+                            <td>Self-Hosting</td>
                             <td class="comparison__yes">✅</td>
                             <td class="comparison__no">❌</td>
                             <td class="comparison__no">❌</td>
                             <td class="comparison__no">❌</td>
                         </tr>
                         <tr>
-                            <td>Military Encryption</td>
+                            <td>Standard Primitives</td>
                             <td class="comparison__yes">✅</td>
-                            <td class="comparison__no">⚠️</td>
-                            <td class="comparison__no">⚠️</td>
-                            <td class="comparison__no">⚠️</td>
+                            <td>⚠️</td>
+                            <td>⚠️</td>
+                            <td>⚠️</td>
                         </tr>
                         <tr>
                             <td>Price</td>
-                            <td class="comparison__price">💰 <strong>Free</strong></td>
+                            <td class="comparison__price">💰 Free</td>
                             <td class="comparison__price">💰💰💰</td>
                             <td class="comparison__price">💰💰</td>
                             <td class="comparison__price">💰💰💰</td>
@@ -267,149 +241,117 @@ user_id = auth.register(<span class="code-string">"my-secret"</span>)
         </div>
     </section>
 
-    <!-- ============================================================ -->
-    <!-- DÉMO                                                          -->
-    <!-- ============================================================ -->
-    <section id="demo" class="demo">
-        <div class="container">
+    <!-- DEMO V1 (Legacy) -->
+    <section class="demo" id="demo">
+        <div class="container demo__container">
             <div class="section-header">
-                <span class="section-header__tag">🧪 Try it now</span>
-                <h2 class="section-header__title">The interactive <span class="highlight">demo</span></h2>
-                <p class="section-header__subtitle">
-                    Create an account in 2 seconds. One master secret. No personal data.
-                </p>
+                <span class="section-header__tag">🧪 Interactive Demo</span>
+                <h2 class="section-header__title">Try it Now</h2>
+                <p class="section-header__subtitle">Create an account in 2 seconds. One master secret. No personal data.</p>
             </div>
 
-            <div class="demo__container">
-                <!-- Message of status -->
-                <div id="demoStatus" class="demo__status demo__status--info">
-                    🚀 Ready to start
-                </div>
+            <div class="demo__status demo__status--info">🚀 Ready to start</div>
 
-                <!-- Form v1 -->
-                <div class="demo__form">
-                    <div class="demo__field">
-                        <label for="demoSecret">Your Master Secret</label>
-                        <div class="demo__field-wrapper">
-                            <input 
-                                type="password" 
-                                id="demoSecret" 
-                                placeholder="Minimum 32 characters" 
-                                autocomplete="off"
-                            />
-                            <span class="char-counter" id="charCounter">0/32</span>
-                        </div>
-                        <small>🔒 This secret will never be sent in plain text. Stored securely.</small>
+            <div class="demo__form">
+                <div class="demo__field">
+                    <label for="demoSecret">Your Master Secret</label>
+                    <div class="demo__field-wrapper">
+                        <input type="password" id="demoSecret" placeholder="Enter your master secret (min 32 chars)">
+                        <span class="char-counter" id="charCounter">0/32</span>
                     </div>
-                    <div class="demo__actions">
-                        <button id="demoRegister" class="btn btn--primary">📝 Register</button>
-                        <button id="demoLogin" class="btn btn--secondary">🔑 Log In</button>
-                        <button id="demoLogout" class="btn btn--danger" style="display:none;">🚪 Log Out</button>
-                    </div>
+                    <small> This secret will never be sent in plain text. Stored securely.</small>
                 </div>
-
-                <!-- Results -->
-                <div id="demoResult" class="demo__result" style="display:none;">
-                    <h4>📋 Results</h4>
-                    <pre id="demoOutput"><code></code></pre>
+                <div class="demo__actions">
+                    <button id="demoRegister" class="btn btn--primary">📝 Register</button>
+                    <button id="demoLogin" class="btn btn--secondary">🔑 Log In</button>
+                    <button id="demoLogout" class="btn btn--danger">🚪 Log Out</button>
                 </div>
+            </div>
 
-                <div class="demo__info">
-                    <p>
-                        💡 <strong>How does it work?</strong><br />
-                        Your secret is used to <strong>encrypt</strong> your data locally.
-                        The server only receives a <strong>challenge</strong> that you can decrypt alone.
-                        This is the magic of <strong>Passwordless Authentication without Password Storage</strong>.
-                    </p>
-                </div>
+            <div class="demo__result" id="demoResult" style="display:none;">
+                <h4>📋 Results</h4>
+                <pre id="demoOutput"></pre>
+            </div>
 
-                <hr color="#A2F3EB" size="10px" style="margin: 4rem; border-radius: 45%;" />
-
-                <!-- Message of status -->
-                <div id="demoStatus2" class="demo__status demo__status--info">
-                    🚀 Ready to start
-                </div>
-
-                <!-- Form v2-->
-                <div class="demo__form">
-                    <div class="demo__field">
-                        <label for="demoSecret2">Your Master Secret</label>
-                        <div class="demo__field-wrapper">
-                            <input 
-                                type="password" 
-                                id="demoSecret2" 
-                                placeholder="Minimum 32 characters" 
-                                autocomplete="off"
-                            />
-                            <span class="char-counter2" id="charCounter2">0/32</span>
-                        </div>
-                        <small>🔒 This secret never leaves your browser. It's used locally via CryptoLogin Client SDK – Cryptographic Operations
- * Uses the browser's Web Crypto API</small>
-                    </div>
-                    <div class="demo__actions">
-                        <button id="demoRegister2" class="btn btn--primary">📝 Register (V2)</button>
-                        <button id="demoLogin2" class="btn btn--secondary">🔑 Login (V2)</button>
-                        <button id="demoLogout2" class="btn btn--danger" style="display:none;">🚪 Logout</button>
-                    </div>
-                </div>
-
-                <!-- Results -->
-                <div id="demoResult2" class="demo__result" style="display:none;">
-                    <h4>📋 Results</h4>
-                    <pre id="demoOutput2"><code></code></pre>
-                </div>
-
-                <div class="demo__info">
-                    <p>
-                        💡 <strong>How it works (V2 - Real Flow)</strong><br />
-                        1. Your secret is used <strong>locally</strong> to derive a <code>user_id</code> (via Web Crypto API).<br />
-                        2. The server only sees the <code>user_id</code> and an <strong>encrypted challenge</strong>.<br />
-                        3. The server decrypts the challenge using Flash512.<br />
-                        4. If the challenge matches, you are authenticated.<br />
-                        <strong>The master secret NEVER leaves your browser.</strong>
-                    </p>
-                    <p style="margin-top:12px; font-size:0.85rem; color:var(--color-text-light);">
-                        🛡️ Powered by <strong>Flash512-Vanguard</strong> (server-side) · AES-256-GCM + Argon2id
-                    </p>
-                </div>
+            <div class="demo__info">
+                <p><strong>💡 How does it work?</strong></p>
+                <p>Your secret is used to encrypt your data locally. The server only receives a challenge that only you can decrypt. This is the magic of Passwordless Authentication without Password Storage.</p>
             </div>
         </div>
     </section>
 
-    <!-- ============================================================ -->
-    <!-- FOOTER                                                        -->
-    <!-- ============================================================ -->
+    <!-- DEMO V2 (Recommended) -->
+    <section class="demo">
+        <div class="container demo__container">
+            <div class="section-header">
+                <span class="section-header__tag">🧪 Demo V2 · Recommended</span>
+                <h2 class="section-header__title">Zero-Knowledge Flow</h2>
+                <p class="section-header__subtitle">The master secret never leaves your browser. Authentication proven via HMAC.</p>
+            </div>
+
+            <div class="demo__status demo__status--info">🚀 Ready to start</div>
+
+            <div class="demo__form">
+                <div class="demo__field">
+                    <label for="demoSecret2">Your Master Secret</label>
+                    <div class="demo__field-wrapper">
+                        <input type="password" id="demoSecret2" placeholder="Enter your master secret (min 32 chars)">
+                        <span class="char-counter2" id="charCounter2">0/32</span>
+                    </div>
+                    <small>🔒 This secret never leaves your browser. It's used locally via Web Crypto API.</small>
+                </div>
+                <div class="demo__actions">
+                    <button id="demoRegister2" class="btn btn--primary">📝 Register (V2)</button>
+                    <button id="demoLogin2" class="btn btn--secondary">🔑 Login (V2)</button>
+                    <button id="demoLogout2" class="btn btn--danger">🚪 Logout</button>
+                </div>
+            </div>
+
+            <div class="demo__result" id="demoResult2" style="display:none;">
+                <h4>📋 Results</h4>
+                <pre id="demoOutput2"></pre>
+            </div>
+
+            <div class="demo__info">
+                <p><strong> How it works (V2 - Real Flow)</strong></p>
+                <p>1. Your secret is used locally to derive a <code>user_id</code> (via Web Crypto API).<br>
+                2. The server only sees the <code>user_id</code> and generates a random challenge.<br>
+                3. Your browser computes HMAC-SHA256(challenge, user_id).<br>
+                4. The server verifies the HMAC without knowing your secret.<br><br>
+                <strong>The master secret NEVER leaves your browser.</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
     <footer class="footer">
         <div class="container">
             <div class="footer__grid">
                 <div class="footer__brand">
-                    <span class="footer__logo">🔐 CryptoLogin</span>
-                    <p>Passwordless Authentication.<br />A digital act of care.</p>
+                    <span class="footer__logo"> CryptoLogin</span>
+                    <p>Zero-Storage Authentication.<br>An act of digital care.</p>
                 </div>
                 <div class="footer__links">
                     <h4>Links</h4>
                     <ul>
-                        <li><a href="https://github.com/erabytse/CryptoLogin">GitHub</a></li>
-                        <li><a href="https://pypi.org/project/cryptologin">PyPI</a></li>
-                        <li><a href="https://erabytse.github.io">ERABYTSE</a></li>
+                        <li><a href="https://github.com/erabytse/CryptoLogin" target="_blank">GitHub</a></li>
+                        <li><a href="https://pypi.org/project/cryptologin/" target="_blank">PyPI</a></li>
+                        <li><a href="https://www.npmjs.com/package/cryptologin-client" target="_blank">npm</a></li>
+                        <li><a href="https://erabytse.github.io" target="_blank">ERABYTSE</a></li>
                     </ul>
                 </div>
                 <div class="footer__philosophy">
                     <h4>Philosophy</h4>
-                    <p>
-                        <em>"PoetryCoding™ : coder comme on écrit de la poésie — avec retenue, avec soin."</em>
-                    </p>
+                    <p>"PoetryCoding™ : code as you write poetry — with restraint, with care."</p>
                 </div>
             </div>
             <div class="footer__bottom">
-                <p>&copy; 2026 <a href="https://erabytse.github.io">ERABYTSE</a> — All rights reserved.</p>
-                <p>Made with ❤️ and <a href="https://erabytse.github.io">PoetryCoding</a>.</p>
+                <p>© 2026 <a href="https://erabytse.github.io" target="_blank">ERABYTSE</a> — All rights reserved.</p>
+                <p>Made with ❤️ and <a href="https://erabytse.github.io" target="_blank">PoetryCoding</a>.</p>
             </div>
         </div>
     </footer>
 
     <script src="js/main.js"></script>
-    <script type="module" src="js/demo.js"></script>
-    <script type="module" src="js/demo-v2.js"></script>
 </body>
 </html>
